@@ -1,8 +1,8 @@
 # HJProgressView
-http://stackoverflow.com/questions/22311516/uiprogressview-custom-track-and-progress-images-in-ios-7-1
+http://stackoverflow.com/questions/22311516/uiprogressview-custom-track-and-progress-images-in-ios-7-1          
 
 ### 一、主要功能：    
-1.修复UIProgressView在iOS7，iOS8.3上设置trackimage和ProgressImage无效Bug
+1.修复UIProgressView在iOS7，iOS8.3上设置trackimage和ProgressImage无效Bug                      
 2.UIProgressView设置进度圆角
 
 ![](https://github.com/huluo666/HJProgressView/blob/master/HJProgressView/2016_03_25_032636.png)
