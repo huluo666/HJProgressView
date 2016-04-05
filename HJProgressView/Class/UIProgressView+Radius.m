@@ -107,6 +107,7 @@ static CGFloat edgeSizeWithRadius(CGFloat cornerRadius) {
     CGRect rect = CGRectMake(0, 0, minEdgeSize, minEdgeSize);
     UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:cornerRadius];
     roundedRect.lineWidth = 0;
+    
     UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0f);
     [color setFill];
     [roundedRect fill];

@@ -12,8 +12,8 @@
 
 @implementation HJProgressView
 {
-    NSTimer *_progressTimer;
-    CGFloat _targetProgress;
+    CADisplayLink  *_displayLink;
+    CGFloat        _targetProgress;
 }
 
 -(instancetype)initWithFrame:(CGRect)frame
@@ -59,9 +59,15 @@
 {
     if (animated){
         _targetProgress = newProgress;
-        if (_progressTimer == nil)
+        if (_displayLink == nil)
         {
-            _progressTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(moveProgress) userInfo:nil repeats:YES];
+            //!!!: 如果在绘图的时候需要用到定时器，通常CADisplayLink
+            // NSTimer很少用于绘图，因为调度优先级比较低，并不会准时调用
+            // 创建定时器
+            //    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timeChange) userInfo:nil repeats:YES];
+            _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(moveProgress)];
+            // 添加主运行循环
+            [_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
         }
     }
     else{
@@ -80,8 +86,7 @@
         self.progress = MAX(self.progress - 0.01, _targetProgress);
     }
     else{
-        [_progressTimer invalidate];
-        _progressTimer = nil;
+        _displayLink = nil;
     }
 }
 
