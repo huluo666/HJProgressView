@@ -14,6 +14,7 @@
 		4EEDC5481CA51C2900A6709D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EEDC5471CA51C2900A6709D /* Assets.xcassets */; };
 		4EEDC54B1CA51C2900A6709D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EEDC5491CA51C2900A6709D /* LaunchScreen.storyboard */; };
 		4EEDC5581CA51F9100A6709D /* UIProgressView+Radius.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEDC5571CA51F9100A6709D /* UIProgressView+Radius.m */; };
+		4EF399981CB3BD3200BBA9BF /* HJProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF399971CB3BD3200BBA9BF /* HJProgressView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		4EEDC54C1CA51C2900A6709D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EEDC5561CA51F9100A6709D /* UIProgressView+Radius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIProgressView+Radius.h"; sourceTree = "<group>"; };
 		4EEDC5571CA51F9100A6709D /* UIProgressView+Radius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+Radius.m"; sourceTree = "<group>"; };
+		4EF399961CB3BD3200BBA9BF /* HJProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJProgressView.h; sourceTree = "<group>"; };
+		4EF399971CB3BD3200BBA9BF /* HJProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJProgressView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,10 +89,20 @@
 		4EEDC5551CA51F9100A6709D /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				4EF399951CB3BD2400BBA9BF /* HJProgressView */,
 				4EEDC5561CA51F9100A6709D /* UIProgressView+Radius.h */,
 				4EEDC5571CA51F9100A6709D /* UIProgressView+Radius.m */,
 			);
 			path = Class;
+			sourceTree = "<group>";
+		};
+		4EF399951CB3BD2400BBA9BF /* HJProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				4EF399961CB3BD3200BBA9BF /* HJProgressView.h */,
+				4EF399971CB3BD3200BBA9BF /* HJProgressView.m */,
+			);
+			path = HJProgressView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +177,7 @@
 			files = (
 				4EEDC5431CA51C2900A6709D /* ViewController.m in Sources */,
 				4EEDC5401CA51C2900A6709D /* AppDelegate.m in Sources */,
+				4EF399981CB3BD3200BBA9BF /* HJProgressView.m in Sources */,
 				4EEDC53D1CA51C2900A6709D /* main.m in Sources */,
 				4EEDC5581CA51F9100A6709D /* UIProgressView+Radius.m in Sources */,
 			);
@@ -312,6 +326,7 @@
 				4EEDC5511CA51C2900A6709D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
