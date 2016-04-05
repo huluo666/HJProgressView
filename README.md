@@ -13,7 +13,7 @@ http://stackoverflow.com/questions/22311516/uiprogressview-custom-track-and-prog
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+    //方式一 系统UIProgressView
     UIProgressView *progressView=[[UIProgressView alloc]initWithProgressViewStyle:UIProgressViewStyleDefault];
     progressView.frame=CGRectMake([UIScreen mainScreen].bounds.size.width/2-150, 50, 300, 50);
     [progressView setProgress:0.68 animated:YES];
@@ -21,6 +21,13 @@ http://stackoverflow.com/questions/22311516/uiprogressview-custom-track-and-prog
     progressView.transform=CGAffineTransformMakeScale(1.0, 8.0);//默认为2px，无法通过frame设置高度
     [self.view addSubview:progressView];
     [progressView setRadiusTrackColor:RGBCOLOR(231, 233, 238) progressColor:RGBCOLOR(255, 153,0)];
+    
+    
+    //方式二 自定义HJProgressView  注意：#import "HJProgressView.h"
+    HJProgressView *progressView2=[[HJProgressView alloc]initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width/2-150, 100, 300,16)];
+    progressView2.progressTintColor=RGBCOLOR(255, 153,0);
+    [progressView2 setProgress:0.8 animated:YES];
+    [self.view addSubview:progressView2];
 }
 
 ```
