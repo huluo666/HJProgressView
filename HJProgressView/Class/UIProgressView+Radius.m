@@ -10,10 +10,31 @@
 #import <objc/runtime.h>
 
 @implementation UIProgressView (Radius)
+@dynamic progressHeigt;
+
+-(void)setProgressHeigt:(CGFloat)progressHeigt
+{
+    if (self.superview) {
+        [self addConstraintWithHeigt:progressHeigt];
+    }
+    objc_setAssociatedObject(self, @selector(progressHeigt), @(progressHeigt), OBJC_ASSOCIATION_ASSIGN);
+   
+}
+
+- (CGFloat)progressHeigt{
+    NSNumber *number = objc_getAssociatedObject(self, @selector(progressHeigt));
+    return number.floatValue;
+}
+
 
 - (void)setRadiusTrackColor:(UIColor *)trackColor
 {
-    UIImage *trackImage = [self imageWithColor:trackColor cornerRadius:self.frame.size.height/2.0];
+    CGFloat progressHeight = self.frame.size.height;
+    if (self.frame.size.height<3) {
+        progressHeight=self.progressHeigt;
+    }
+    
+    UIImage *trackImage = [self imageWithColor:trackColor cornerRadius:progressHeight/2.0];
     [self setTrackImage:trackImage];
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] <= 9.0) {
@@ -24,7 +45,11 @@
 
 - (void)setRadiusProgressColor:(UIColor *)progressColor
 {
-    UIImage *progressImage = [self imageWithColor:progressColor cornerRadius:self.frame.size.height/2.0];
+    CGFloat progressHeight = self.frame.size.height;
+    if (self.frame.size.height<3) {
+        progressHeight=self.progressHeigt;
+    }
+    UIImage *progressImage = [self imageWithColor:progressColor cornerRadius:progressHeight/2.0];
     [self setProgressImage:progressImage];
 
     if ([[[UIDevice currentDevice] systemVersion] floatValue] <= 9.0) {
@@ -37,6 +62,7 @@
 - (void)setRadiusTrackColor:(UIColor *)trackColor
               progressColor:(UIColor *)progressColor
 {
+    self.translatesAutoresizingMaskIntoConstraints = NO;
     [self setRadiusTrackColor:trackColor];
     [self setRadiusProgressColor:progressColor];
 }
@@ -93,6 +119,43 @@
       [self hjProgress_layoutSubviews];
 }
 
+
+-(void)addConstraintWithHeigt:(CGFloat)heigt
+{
+    CGFloat w = self.bounds.size.width;
+    CGFloat h = heigt;
+    CGFloat X = self.frame.origin.x;
+    CGFloat Y = self.frame.origin.y;
+    [self removeConstraints:self.constraints];
+
+    
+    //    //宽
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:0 toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:w]];
+    
+    //高
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:0 toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:h]];
+    
+    UIView *superview = self.superview;
+    //--Left-X
+    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                      relatedBy:NSLayoutRelationEqual
+                                                                         toItem:superview
+                                                                      attribute:NSLayoutAttributeLeft
+                                                                     multiplier:1.0
+                                                                       constant:X];
+    [superview  addConstraint:leftConstraint];
+    
+    //--Top-Y
+    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:self
+                                                                     attribute:NSLayoutAttributeTop
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:superview
+                                                                     attribute:NSLayoutAttributeTop
+                                                                    multiplier:1.0
+                                                                      constant:Y];
+    [superview  addConstraint:topConstraint];
+}
 
 
 #pragma mark - Creat cornerRadiusImage

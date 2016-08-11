@@ -15,4 +15,6 @@
 - (void)setRadiusTrackColor:(UIColor *)trackColor
               progressColor:(UIColor *)progressColor;
 
+@property (nonatomic, assign) CGFloat progressHeigt;
+
 @end
