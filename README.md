@@ -17,6 +17,11 @@ http://stackoverflow.com/questions/22311516/uiprogressview-custom-track-and-prog
 ![](https://github.com/huluo666/HJProgressView/blob/master/HJProgressView/2016_03_25_032636.png)
 
 ### 二、用法示例
+ 
+ 优化：transform改变高度，会出现动画不自然，在iOS7.xx系统出现高度不准等Bug，故UIProgressView+Radius内部使用AutoLayout进行故UIProgressView高度设置
+ //progressView.transform=CGAffineTransformMakeScale(1.0, 8.0);//默认为2px，无法通过frame设置高度
+
+
 ```objectivec
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
 - (void)viewDidLoad {
@@ -31,10 +36,6 @@ http://stackoverflow.com/questions/22311516/uiprogressview-custom-track-and-prog
     [progressView setRadiusTrackColor:RGBCOLOR(231, 233, 238) progressColor:RGBCOLOR(255, 153,0)];
     [progressView setProgress:0.68 animated:YES];
     
-   
-   //PS：使用transform改变高度，出现动画不自然，在iOS7.xx系统出现高度不准等Bug，改用AutoLayout实现
-   //progressView.transform=CGAffineTransformMakeScale(1.0, 8.0);//默认为2px，无法通过frame设置高度
-
 
     
     
