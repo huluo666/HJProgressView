@@ -17,7 +17,7 @@
     if (self.superview) {
         [self addConstraintWithHeigt:progressHeigt];
     }
-    objc_setAssociatedObject(self, @selector(progressHeigt), @(progressHeigt), OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @selector(progressHeigt), @(progressHeigt), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
    
 }
 
